@@ -1,0 +1,208 @@
+#Pour gérer la partie KV soit on ecrit le contenue directement dans cette methode de cette facon ou alors on renseigne de cette meme facon un fichier local avec ce contenue
+#Lorque le language KV est utiliser, il est pas necessaire d'importer quoi que ce soit.
+#---------------------------------------------------------------------------------------------------------------------------------------
+<MaDisposition>
+
+    BoxLayout:
+        orientation: 'vertical'
+        
+        Label:                                               #WIDGET Permettant l'affichage d'un mot/phrase
+            id: Label_Horloge                                #Identifiant permettant a ce label d'etre accessible via le code python
+            text_language: "fr"                              #Ligne permettant de connaitre la langue utiliser dans ce label
+            text: root.Time_Horloge                          #Valeur qui doit etre afficher a l'ecran
+
+            bold: False                                      #Parametre permettant de mettre en gras un label
+            italic: False                                    #Permet de mettre en italique le contenue du label
+            underline : False                                #Permet de souligner le contenue du label
+            color: (13,1,1,1)                                #Parametre permettant d'ajouter de la couleur a un label
+
+        Label:
+            id: Label_UtilisationCPU
+            text_language: "fr"
+            text: root.UtilisationCPU
+
+            bold: False                                      #Parametre permettant de mettre en gras un label
+            italic: False                                    #Permet de mettre en italique le contenue du label
+            underline : False                                #Permet de souligner le contenue du label
+            color: (73,1,1,1)                                #Parametre permettant d'ajouter de la couleur a un label
+
+        Label:
+            id: Label_MemoireUtilise
+            text_language: "fr"
+            text: root.MemoireUtilise
+
+            bold: False                                      #Parametre permettant de mettre en gras un label
+            italic: False                                    #Permet de mettre en italique le contenue du label
+            underline : False                                #Permet de souligner le contenue du label
+            color: (73,1,1,1)                                #Parametre permettant d'ajouter de la couleur a un label
+
+        Label:
+            id: Label_CPUtemp
+            text_language: "fr"
+            text: root.CPUtemp
+
+            bold: False                                      #Parametre permettant de mettre en gras un label
+            italic: False                                    #Permet de mettre en italique le contenue du label
+            underline : False                                #Permet de souligner le contenue du label
+            color: (73,1,1,1)                                #Parametre permettant d'ajouter de la couleur a un label
+
+        Label:
+            id: Label_BTC_Market
+            text_language: "fr"
+            text: root.BTC_Market
+
+            bold: False                                      #Parametre permettant de mettre en gras un label
+            italic: False                                    #Permet de mettre en italique le contenue du label
+            underline : False                                #Permet de souligner le contenue du label
+            color: (73,1,1,1)                                #Parametre permettant d'ajouter de la couleur a un label
+
+        Button:                                                     #Ce bouton va nous permettre de changer d'ecran Kivy
+            text:"En Direct du Marche"                              #On indique un texte sur le bouton
+            on_press: root.manager.current = 'En Direct du Marche'  #On indique la fonction du bouton, dans ce cas le changement d'ecran via le ScreenManager de Kivy
+
+        Button:
+            text: "Surveillance du Marche"
+            on_press: root.manager.current = 'Surveillance du Marche'
+
+        Button:
+            text: "Visualiser le cours du Marche"
+            on_press: root.manager.current = 'Visualiser le cours du Marche'
+
+    BoxLayout:
+        orientation: 'horizontal'               #On indique une diposition differente, en Horizontal pour ce qui suit
+
+        Image:                                  #On Indique l'utilisation d'image 
+            id: Image_Fear_Greed_Index          #Un identifiant pour le widget
+            source: root.Fear_Gread_Index_path  #On indique aussi le chemin que doit utiliser Kivy pour retrouver l'image, ici denominer par une variable string dans le programme Principal
+            keep_ratio: True                    #On indique si on souhaite garder le ration d'affiche d'origine de l'image
+            keep_data: True                     #On indique si on souhaite que Kivy garde en memoire les informations concernant l'image concerne
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+<En_Direct_Du_Marche>
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:                                                                          #WIDGET Permettant l'affichage d'un mot/phrase
+            id: Label_EDM                                                               #Identifiant permettant a ce label d'etre accessible via le code python
+            text_language: "fr"                                                         #Ligne permettant de connaitre la langue utiliser dans ce label
+            text: "En Direct du Marche - Les Paires a Surveiller"                       #Valeur qui doit etre afficher a l'ecran
+
+            bold: False                                                                 #Parametre permettant de mettre en gras un label
+            italic: False                                                               #Permet de mettre en italique le contenue du label
+            underline : False                                                           #Permet de souligner le contenue du label
+            color: (13,1,1,1)                                                           #Parametre permettant d'ajouter de la couleur a un label
+
+        Button:
+            text:"BTC-EUR"
+        Button:
+            text:"BTC-USD"
+        Button:
+            text:"ETH-EUR"
+        Button:
+            text:"ETH-EUR"
+        Button:
+            text:"LINK-EUR"
+        Button:
+            text:"LINK-USD"
+
+        Label:
+            text:"Effectue une Recherche"
+        
+        TextInput:
+            id: Entree_texte_RECHERCHE                       #Identifiant permettant a ce label d'etre accessible via le code python
+            text:"XLM-EUR"                                   #Texte visible dans l'entree texte lors de son affichage
+            allow_copy: True                                 #Autorise le copier/coller
+            auto_indent: True                                #Kivy peut automatiquement indenter le contenue de l'entree
+            cursor_blink: True                               #Le curseur quand il sera place dans l'entree; il clignotera pour annoncer sa presence
+            keyboard_suggestions : True                      #Les clavier intelligent pourront presenter a l'utilisateur des mots a suggerer a entree
+
+        Button:
+            text:"Go!"
+
+        Button:
+            text:"Accueil"
+            on_press: root.manager.current = 'Accueil'
+#---------------------------------------------------------------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------
+<Surveillance_Du_Marche>
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:                                                          #WIDGET Permettant l'affichage d'un mot/phrase
+            id: Label_PSM                                               #Identifiant permettant a ce label d'etre accessible via le code python
+            text_language: "fr"                                         #Ligne permettant de connaitre la langue utiliser dans ce label
+            text: "Votre Alerte - Etablir une Surveillance"             #Valeur qui doit etre afficher a l'ecran
+
+            bold: False                                                 #Parametre permettant de mettre en gras un label
+            italic: False                                               #Permet de mettre en italique le contenue du label
+            underline : False                                           #Permet de souligner le contenue du label
+            color: (13,1,1,1)                                           #Parametre permettant d'ajouter de la couleur a un label
+
+        Label:
+            text:"Saisir la Paire a Surveiller en Temps-Reel:"
+
+        TextInput:
+            id: Entree_texte_SURVEILLANCE01                  #Identifiant permettant a ce label d'etre accessible via le code python
+            text:"XLM-EUR"                                   #Texte visible dans l'entree texte lors de son affichage
+            allow_copy: True                                 #Autorise le copier/coller
+            auto_indent: True                                #Kivy peut automatiquement indenter le contenue de l'entree
+            cursor_blink: True                               #Le curseur quand il sera place dans l'entree; il clignotera pour annoncer sa presence
+            keyboard_suggestions : True                      #Les clavier intelligent pourront presenter a l'utilisateur des mots a suggerer a entree
+
+        Label:
+            text:"Saisir le Montant a Surveiller en Temps-Reel:"
+
+        TextInput:
+            id: Entree_texte_SURVEILLANCE02                  #Identifiant permettant a ce label d'etre accessible via le code python
+            text:"13"                                        #Texte visible dans l'entree texte lors de son affichage
+            allow_copy: True                                 #Autorise le copier/coller
+            auto_indent: True                                #Kivy peut automatiquement indenter le contenue de l'entree
+            cursor_blink: True                               #Le curseur quand il sera place dans l'entree; il clignotera pour annoncer sa presence
+            keyboard_suggestions : True                      #Les clavier intelligent pourront presenter a l'utilisateur des mots a suggerer a entree
+
+        Label:
+            text:"Indiquer un Message ?"
+
+        TextInput:
+            id: Entree_texte_SURVEILLANCE03                  #Identifiant permettant a ce label d'etre accessible via le code python
+            text:"Mon Message"                               #Texte visible dans l'entree texte lors de son affichage
+            allow_copy: True                                 #Autorise le copier/coller
+            auto_indent: True                                #Kivy peut automatiquement indenter le contenue de l'entree
+            cursor_blink: True                               #Le curseur quand il sera place dans l'entree; il clignotera pour annoncer sa presence
+            keyboard_suggestions : True                      #Les clavier intelligent pourront presenter a l'utilisateur des mots a suggerer a entree
+
+        Button:
+            text:"Placer la Surveillance"
+
+        Button:
+            text:"Accueil"
+            on_press: root.manager.current = 'Accueil'
+#---------------------------------------------------------------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------------------------------------------------------------        
+<Visualiser_Cours_Du_Marche>
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:                                               #WIDGET Permettant l'affichage d'un mot/phrase
+            id: Label_CDM                                    #Identifiant permettant a ce label d'etre accessible via le code python
+            text_language: "fr"                              #Ligne permettant de connaitre la langue utiliser dans ce label
+            text: "Obtenir un Graphique du Cours"             #Valeur qui doit etre afficher a l'ecran
+
+            bold: False                                      #Parametre permettant de mettre en gras un label
+            italic: False                                    #Permet de mettre en italique le contenue du label
+            underline : False                                #Permet de souligner le contenue du label
+            color: (13,1,1,1)                                #Parametre permettant d'ajouter de la couleur a un label
+
+        Button:
+            text:"Accueil"
+            on_press: root.manager.current = 'Accueil'
+#---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
