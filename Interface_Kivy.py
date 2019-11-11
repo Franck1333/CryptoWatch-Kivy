@@ -52,6 +52,13 @@ from kivy.clock import Clock                                    #Importation de 
 from kivy.lang import Builder                                   #Importation de Builder pour la lecture et l'interpretation du language KV
 
 from kivy.uix.screenmanager import ScreenManager, Screen        #Importation de ScreenManager/Screen permettant la gestion de plusieurs 'ecran'(aka Fenetre ou page).
+
+from kivy.uix.popup import Popup                                #Importation des Popup de Kivy
+
+from kivy.uix.label import Label                                #Importation des Label de Kivy
+
+from kivy.uix.button import Button                              #Importation des Boutton de Kivy
+
 #---------------------------------------Kivy LIB---------------------------------------
 #Builder.load_string(""" """)           #Saisie indiquant la disposition des elements visuels
 
@@ -147,26 +154,147 @@ class En_Direct_Du_Marche(BoxLayout, Screen):
         #Recuperation des Informations
         self.Symbole_Coin_cryptonator,self.Prix_Actuel_cryptonator,self.Volume_24h_cryptonator,self.Difference_Prix_24h_cryptonator,self.Volume_Monnaie_30DAY,self.Prix_Moins_Eleve_24h,self.Prix_Actuel,self.Prix_Plus_Eleve_24h,self.Liquidite_Achat,self.Liquidite_Vente = Recherche_Info_Coin("BTC-EUR")
 
+        InfoPopup = BoxLayout(orientation='vertical')
+        
+        InfoPopup.add_widget(Label(text= self.Symbole_Coin_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Prix_Actuel_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Difference_Prix_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_Monnaie_30DAY))
+        InfoPopup.add_widget(Label(text= self.Prix_Moins_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Prix_Plus_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Achat))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Vente))
+        
+        KivyPopup = Popup(title= self.Symbole_Coin_cryptonator, content=InfoPopup, auto_dismiss=True)
+
+        BoutonFermeturePopup = Button(text="Fermer")
+        BoutonFermeturePopup.bind(on_press=KivyPopup.dismiss)
+        InfoPopup.add_widget(BoutonFermeturePopup)
+        
+        KivyPopup.open()
+        
+
     def Rechercher_BTC_USD(self):
         #Recuperation des Informations
         self.Symbole_Coin_cryptonator,self.Prix_Actuel_cryptonator,self.Volume_24h_cryptonator,self.Difference_Prix_24h_cryptonator,self.Volume_Monnaie_30DAY,self.Prix_Moins_Eleve_24h,self.Prix_Actuel,self.Prix_Plus_Eleve_24h,self.Liquidite_Achat,self.Liquidite_Vente = Recherche_Info_Coin("BTC-USD")
 
+        InfoPopup = BoxLayout(orientation='vertical')
+        
+        InfoPopup.add_widget(Label(text= self.Symbole_Coin_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Prix_Actuel_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Difference_Prix_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_Monnaie_30DAY))
+        InfoPopup.add_widget(Label(text= self.Prix_Moins_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Prix_Plus_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Achat))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Vente))
+        
+        KivyPopup = Popup(title= self.Symbole_Coin_cryptonator, content=InfoPopup, auto_dismiss=True)
+
+        BoutonFermeturePopup = Button(text="Fermer")
+        BoutonFermeturePopup.bind(on_press=KivyPopup.dismiss)
+        InfoPopup.add_widget(BoutonFermeturePopup)
+        
+        KivyPopup.open()
+        
     def Rechercher_ETH_EUR(self):
         #Recuperation des Informations
         self.Symbole_Coin_cryptonator,self.Prix_Actuel_cryptonator,self.Volume_24h_cryptonator,self.Difference_Prix_24h_cryptonator,self.Volume_Monnaie_30DAY,self.Prix_Moins_Eleve_24h,self.Prix_Actuel,self.Prix_Plus_Eleve_24h,self.Liquidite_Achat,self.Liquidite_Vente = Recherche_Info_Coin("ETH-EUR")
 
+        InfoPopup = BoxLayout(orientation='vertical')
+        
+        InfoPopup.add_widget(Label(text= self.Symbole_Coin_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Prix_Actuel_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Difference_Prix_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_Monnaie_30DAY))
+        InfoPopup.add_widget(Label(text= self.Prix_Moins_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Prix_Plus_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Achat))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Vente))
+        
+        KivyPopup = Popup(title= self.Symbole_Coin_cryptonator, content=InfoPopup, auto_dismiss=True)
+
+        BoutonFermeturePopup = Button(text="Fermer")
+        BoutonFermeturePopup.bind(on_press=KivyPopup.dismiss)
+        InfoPopup.add_widget(BoutonFermeturePopup)
+        
+        KivyPopup.open()
+        
     def Rechercher_ETH_USD(self):
         #Recuperation des Informations
         self.Symbole_Coin_cryptonator,self.Prix_Actuel_cryptonator,self.Volume_24h_cryptonator,self.Difference_Prix_24h_cryptonator,self.Volume_Monnaie_30DAY,self.Prix_Moins_Eleve_24h,self.Prix_Actuel,self.Prix_Plus_Eleve_24h,self.Liquidite_Achat,self.Liquidite_Vente = Recherche_Info_Coin("ETH-USD")
 
+        InfoPopup = BoxLayout(orientation='vertical')
+        
+        InfoPopup.add_widget(Label(text= self.Symbole_Coin_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Prix_Actuel_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Difference_Prix_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_Monnaie_30DAY))
+        InfoPopup.add_widget(Label(text= self.Prix_Moins_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Prix_Plus_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Achat))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Vente))
+        
+        KivyPopup = Popup(title= self.Symbole_Coin_cryptonator, content=InfoPopup, auto_dismiss=True)
+
+        BoutonFermeturePopup = Button(text="Fermer")
+        BoutonFermeturePopup.bind(on_press=KivyPopup.dismiss)
+        InfoPopup.add_widget(BoutonFermeturePopup)
+        
+        KivyPopup.open()
+        
     def Rechercher_LINK_EUR(self):
         #Recuperation des Informations
         self.Symbole_Coin_cryptonator,self.Prix_Actuel_cryptonator,self.Volume_24h_cryptonator,self.Difference_Prix_24h_cryptonator,self.Volume_Monnaie_30DAY,self.Prix_Moins_Eleve_24h,self.Prix_Actuel,self.Prix_Plus_Eleve_24h,self.Liquidite_Achat,self.Liquidite_Vente = Recherche_Info_Coin("LINK-EUR")
 
+        InfoPopup = BoxLayout(orientation='vertical')
+        
+        InfoPopup.add_widget(Label(text= self.Symbole_Coin_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Prix_Actuel_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Difference_Prix_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_Monnaie_30DAY))
+        InfoPopup.add_widget(Label(text= self.Prix_Moins_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Prix_Plus_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Achat))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Vente))
+        
+        KivyPopup = Popup(title= self.Symbole_Coin_cryptonator, content=InfoPopup, auto_dismiss=True)
+
+        BoutonFermeturePopup = Button(text="Fermer")
+        BoutonFermeturePopup.bind(on_press=KivyPopup.dismiss)
+        InfoPopup.add_widget(BoutonFermeturePopup)
+        
+        KivyPopup.open()
+        
     def Rechercher_LINK_USD(self):
         #Recuperation des Informations
         self.Symbole_Coin_cryptonator,self.Prix_Actuel_cryptonator,self.Volume_24h_cryptonator,self.Difference_Prix_24h_cryptonator,self.Volume_Monnaie_30DAY,self.Prix_Moins_Eleve_24h,self.Prix_Actuel,self.Prix_Plus_Eleve_24h,self.Liquidite_Achat,self.Liquidite_Vente = Recherche_Info_Coin("LINK-USD")
 
+        InfoPopup = BoxLayout(orientation='vertical')
+        
+        InfoPopup.add_widget(Label(text= self.Symbole_Coin_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Prix_Actuel_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Difference_Prix_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_Monnaie_30DAY))
+        InfoPopup.add_widget(Label(text= self.Prix_Moins_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Prix_Plus_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Achat))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Vente))
+        
+        KivyPopup = Popup(title= self.Symbole_Coin_cryptonator, content=InfoPopup, auto_dismiss=True)
+
+        BoutonFermeturePopup = Button(text="Fermer")
+        BoutonFermeturePopup.bind(on_press=KivyPopup.dismiss)
+        InfoPopup.add_widget(BoutonFermeturePopup)
+        
+        KivyPopup.open()
+        
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 
