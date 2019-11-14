@@ -294,12 +294,62 @@ class En_Direct_Du_Marche(BoxLayout, Screen):
         InfoPopup.add_widget(BoutonFermeturePopup)
         
         KivyPopup.open()
+
+    def Rechercher_de_la_Paire(self,Paire_Indiquee):
+        #Recuperation des Informations
+        self.Symbole_Coin_cryptonator,self.Prix_Actuel_cryptonator,self.Volume_24h_cryptonator,self.Difference_Prix_24h_cryptonator,self.Volume_Monnaie_30DAY,self.Prix_Moins_Eleve_24h,self.Prix_Actuel,self.Prix_Plus_Eleve_24h,self.Liquidite_Achat,self.Liquidite_Vente = Recherche_Info_Coin(Paire_Indiquee)
+
+        InfoPopup = BoxLayout(orientation='vertical')
+        
+        InfoPopup.add_widget(Label(text= self.Symbole_Coin_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Prix_Actuel_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Difference_Prix_24h_cryptonator))
+        InfoPopup.add_widget(Label(text= self.Volume_Monnaie_30DAY))
+        InfoPopup.add_widget(Label(text= self.Prix_Moins_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Prix_Plus_Eleve_24h))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Achat))
+        InfoPopup.add_widget(Label(text= self.Liquidite_Vente))
+        
+        KivyPopup = Popup(title= self.Symbole_Coin_cryptonator, content=InfoPopup, auto_dismiss=True)
+
+        BoutonFermeturePopup = Button(text="Fermer")
+        BoutonFermeturePopup.bind(on_press=KivyPopup.dismiss)
+        InfoPopup.add_widget(BoutonFermeturePopup)
+        
+        KivyPopup.open()
         
 
+    def recuperation_input(self):
+        #Obtenir l'entree que l'utilisateur a saisie
+        #ID INPUT : Entree_texte_RECHERCHE
+
+        Paire_Selectionee = self.ids.Entree_texte_RECHERCHE.text                     #Accession a la valeur du widget ayant pour ID "Entree_texte_RECHERCHE"
+        #print(InputUser)
+        En_Direct_Du_Marche.Rechercher_de_la_Paire(self,Paire_Selectionee)           #Obtention des Informations du Coin/Token sur le marché par rapport au Informations saisie dans la boite a texte
+
+        
+
+        
 #---------------------------------------------------------------------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 class Surveillance_Du_Marche(BoxLayout, Screen):
+#PROBLEME DANS CETTE CLASSE:
+    #1- Informations non mises a jour dans l'interface visuel alors qu'elles le sont dans la console
+    #2- Un Probleme effectue la MAJ des infos alors que le POPUP est fermer... a fix!
+
+
+
+    #---Variables a Mettre a jour---
+
+    #--Surveillance--
+    Annonce_0 = StringProperty()     #Quand cette variable changera, toute les elements comportant cette variable se mettront a jour lorsque sa valeurs changera car elle est specifie 'StringProperty'
+    Annonce_1 = StringProperty()
+    Message_Personnaliser = StringProperty()
+    #--Surveillance--
+
+
     def __init__(self, **kwargs):
         super(Surveillance_Du_Marche, self).__init__(**kwargs)   #On SuperCharge la classe
 
@@ -308,7 +358,50 @@ class Surveillance_Du_Marche(BoxLayout, Screen):
         #Clock.schedule_once(self.methode)
         #Clock.schedule_interval(self.methode, X Secondes d'interval de rafraichissement)
         #---Elements a Mettre a jour---
-    pass
+
+
+    #Recuperation des Entrees
+    def recuperation_input_surveillance(self):
+        Recuperation_Paire = self.ids.Entree_texte_SURVEILLANCE01.text                                                                                  #Recuperation de la Valeur saisie dans la boite a texte
+        Recuperation_Montant = self.ids.Entree_texte_SURVEILLANCE02.text                                                                                #Recuperation de la Valeur saisie dans la boite a texte
+        Recuperation_Message_Personnaliser = self.ids.Entree_texte_SURVEILLANCE03.text                                                                  #Recuperation de la Valeur saisie dans la boite a texte
+        print(Recuperation_Paire +" " + Recuperation_Montant +" "+ Recuperation_Message_Personnaliser)                                                  #Affichage de cette valeur dans la console
+        Surveillance_Du_Marche.Affichage_Etat_Surveillance(self,Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)                  #On donne les information saisie a cette fonction pour traitement
+
+
+    def Affichage_Etat_Surveillance(self,Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser):
+        #Recuperation des Informations
+        self.Annonce_0 , self.Annonce_1 , self.Message_Personnaliser, boolean_popup = Recherche_Et_Surveillance_Coin(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)
+
+        InfoPopup = BoxLayout(orientation='vertical')
+        
+        InfoPopup.add_widget(Label(text= self.Annonce_0))
+        InfoPopup.add_widget(Label(text= self.Annonce_1))
+        InfoPopup.add_widget(Label(text= self.Message_Personnaliser))
+        
+        KivyPopup = Popup(title= "Surveillance En Cours...", content=InfoPopup, auto_dismiss=True)
+
+        BoutonFermeturePopup = Button(text="Fermer")
+        BoutonFermeturePopup.bind(on_press=KivyPopup.dismiss)
+        #Un Probleme effectue la MAJ des infos alors que le POPUP est fermer... a fix!
+        InfoPopup.add_widget(BoutonFermeturePopup)
+        
+        KivyPopup.open()
+
+    def update_Affichage_Etat_Surveillance(self, *args):
+        Recuperation_Paire = self.ids.Entree_texte_SURVEILLANCE01.text                                                          #Recuperation de la Valeur saisie dans la boite a texte
+        Recuperation_Montant = self.ids.Entree_texte_SURVEILLANCE02.text                                                        #Recuperation de la Valeur saisie dans la boite a texte
+        Recuperation_Message_Personnaliser = self.ids.Entree_texte_SURVEILLANCE03.text                                          #Recuperation de la Valeur saisie dans la boite a texte
+
+        #MAJ des Informations
+        self.Annonce_0 , self.Annonce_1 , self.Message_Personnaliser, boolean_popup = Recherche_Et_Surveillance_Coin(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)
+
+    def lanceur_surveillance(self):
+
+        Surveillance_Du_Marche.recuperation_input_surveillance(self)
+        Clock.schedule_once(self.update_Affichage_Etat_Surveillance)
+        Clock.schedule_interval(self.update_Affichage_Etat_Surveillance, 5)
+
 #---------------------------------------------------------------------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------------------------------------------------------
