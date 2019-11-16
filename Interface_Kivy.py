@@ -329,6 +329,18 @@ class En_Direct_Du_Marche(BoxLayout, Screen):
         En_Direct_Du_Marche.Rechercher_de_la_Paire(self,Paire_Selectionee)           #Obtention des Informations du Coin/Token sur le marché par rapport au Informations saisie dans la boite a texte
 
         
+        KivyPopup = Popup(title= self.Symbole_Coin_cryptonator, content=InfoPopup, auto_dismiss=True)
+
+        BoutonFermeturePopup = Button(text="Fermer")
+        BoutonFermeturePopup.bind(on_press=KivyPopup.dismiss)
+        InfoPopup.add_widget(BoutonFermeturePopup)
+        
+        KivyPopup.open()
+        
+
+    def recuperation_input(self):
+        #Obtenir l'entree que l'utilisateur a saisie
+        #ID INPUT : Entree_texte_RECHERCHE
 
         
 #---------------------------------------------------------------------------------------------------------------------------------------
