@@ -184,7 +184,19 @@
 
         Button:
             text:"Placer la Surveillance - NON FONCTIONNEL"
-            #on_press: root.rien
+            on_press: root.manager.current = 'PageAlerte'
+
+        Button:
+            text:"Accueil"
+            on_press: root.manager.current = 'Accueil'
+     
+<PageAlerte>
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            id: Test_label
+            text: "Hello test"
 
         Button:
             text:"Accueil"
@@ -200,7 +212,7 @@
         Label:                                               #WIDGET Permettant l'affichage d'un mot/phrase
             id: Label_CDM                                    #Identifiant permettant a ce label d'etre accessible via le code python
             text_language: "fr"                              #Ligne permettant de connaitre la langue utiliser dans ce label
-            text: "Obtenir un Graphique du Cours"             #Valeur qui doit etre afficher a l'ecran
+            text: "Obtenir un Graphique du Cours"            #Valeur qui doit etre afficher a l'ecran
 
             bold: False                                      #Parametre permettant de mettre en gras un label
             italic: False                                    #Permet de mettre en italique le contenue du label

@@ -355,6 +355,14 @@ class Surveillance_Du_Marche(BoxLayout, Screen):
         #Clock.schedule_interval(self.methode, X Secondes d'interval de rafraichissement)
         #---Elements a Mettre a jour---
 
+        Recuperation_Paire = self.ids.Entree_texte_SURVEILLANCE01.text
+        Recuperation_Montant = self.ids.Entree_texte_SURVEILLANCE02.text
+        Recuperation_Message_Personnaliser = self.ids.Entree_texte_SURVEILLANCE03.text       
+
+        self.Recuperation_Paire = Recuperation_Paire
+        self.Recuperation_Montant = Recuperation_Montant
+        self.Recuperation_Message_Personnaliser = Recuperation_Message_Personnaliser
+
 
     #Recuperation des Entrees
     def recuperation_input_surveillance(self):
@@ -371,32 +379,54 @@ class Surveillance_Du_Marche(BoxLayout, Screen):
         #Recuperation des Informations
         self.Annonce_0 , self.Annonce_1 , self.Message_Personnaliser, boolean_popup = Recherche_Et_Surveillance_Coin(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)
 
-        class PageAlerte(BoxLayout, Screen):
 
-            #---Variables a Mettre a jour---
-            #--Surveillance--
-            Annonce_0 = StringProperty()     #Quand cette variable changera, toute les elements comportant cette variable se mettront a jour lorsque sa valeurs changera car elle est specifie 'StringProperty'
-            Annonce_1 = StringProperty()
-            Message_Personnaliser = StringProperty()
-            #--Surveillance--            
-            
-            def __init__(self, **kwargs):
-                super(Surveillance_Du_Marche, self).__init__(**kwargs)   #On SuperCharge la classe
+    def get_Recuperation_Paire(self):
+        return self.Recuperation_Paire
 
-                #---Elements a Mettre a jour---
-                #Exemple:
-                #Clock.schedule_once(self.methode)
-                #Clock.schedule_interval(self.methode, X Secondes d'interval de rafraichissement)
-                #---Elements a Mettre a jour---
+    def get_Recuperation_Montant(self):
+        return self.Recuperation_Montant
+
+    def get_Recuperation_Message_Personnaliser(self):
+        return self.Recuperation_Message_Personnaliser
+
+
+#-----------------------------------
+class PageAlerte(BoxLayout, Screen):
+#AIDES : https://www.geeksforgeeks.org/getter-and-setter-in-python/
+
+
+    #---Variables a Mettre a jour---
+    #--Surveillance--
+    Annonce_0 = StringProperty()     #Quand cette variable changera, toute les elements comportant cette variable se mettront a jour lorsque sa valeurs changera car elle est specifie 'StringProperty'
+    Annonce_1 = StringProperty()
+    Message_Personnaliser = StringProperty()
+    #--Surveillance--
                 
-            def update_Affichage_Etat_Surveillance(self, *args):
-                Recuperation_Paire = self.ids.Entree_texte_SURVEILLANCE01.text                                                          #Recuperation de la Valeur saisie dans la boite a texte
-                Recuperation_Montant = self.ids.Entree_texte_SURVEILLANCE02.text                                                        #Recuperation de la Valeur saisie dans la boite a texte
-                Recuperation_Message_Personnaliser = self.ids.Entree_texte_SURVEILLANCE03.text                                          #Recuperation de la Valeur saisie dans la boite a texte
+    def __init__(self, **kwargs):
+        super(PageAlerte, self).__init__(**kwargs)   #On SuperCharge la classe
 
-                #MAJ des Informations
-                self.Annonce_0 , self.Annonce_1 , self.Message_Personnaliser, boolean_popup = Recherche_Et_Surveillance_Coin(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)
+        #---Elements a Mettre a jour---
+        #Exemple:
+        #Clock.schedule_once(self.methode)
+        #Clock.schedule_interval(self.methode, X Secondes d'interval de rafraichissement)
+        def lancement_maj():
+            Clock.schedule_once(self.update_Affichage_Etat_Surveillance)
+            Clock.schedule_interval(self.update_Affichage_Etat_Surveillance, 5)
+        #---Elements a Mettre a jour---
 
+
+                
+    def update_Affichage_Etat_Surveillance(self, *args):
+        getter = Surveillance_Du_Marche()
+
+        Recuperation_Paire = getter.get_Recuperation_Paire()                                                          #Recuperation de la Valeur saisie dans la boite a texte
+        Recuperation_Montant = getter.get_Recuperation_Montant()                                                         #Recuperation de la Valeur saisie dans la boite a texte
+        Recuperation_Message_Personnaliser = getter.get_Recuperation_Message_Personnaliser()                                           #Recuperation de la Valeur saisie dans la boite a texte
+
+        #MAJ des Informations
+        self.Annonce_0 , self.Annonce_1 , self.Message_Personnaliser, boolean_popup = Recherche_Et_Surveillance_Coin(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)
+
+        PageAlerte.lancement_maj()
 #---------------------------------------------------------------------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------------------------------------------------------
@@ -411,6 +441,7 @@ sm = ScreenManager()
 sm.add_widget(MaDisposition(name ='Accueil'))
 sm.add_widget(En_Direct_Du_Marche(name='En Direct du Marche'))
 sm.add_widget(Surveillance_Du_Marche(name='Surveillance du Marche'))
+sm.add_widget(PageAlerte(name='PageAlerte'))
 sm.add_widget(Visualiser_Cours_Du_Marche(name='Visualiser le cours du Marche'))
 #---------------------------------------------Creation du Screen Manager---------------------------------------------
       
