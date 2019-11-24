@@ -404,7 +404,7 @@ class PageAlerte(BoxLayout, Screen):
     Annonce_1 = StringProperty()
     Message_Personnaliser = StringProperty()
     #--Surveillance--
-                
+            
     def __init__(self, **kwargs):
         super(PageAlerte, self).__init__(**kwargs)   #On SuperCharge la classe
 
