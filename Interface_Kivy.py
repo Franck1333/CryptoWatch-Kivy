@@ -439,7 +439,7 @@ class PageAlerte(BoxLayout, Screen):
     #LE PROBLEME PRINCIPAL DANS CETTE CLASSE le 24/11/2019:
     #Lorsque schedule_once est lancer , le programme obtient la valeur saisie par l'utilisateur
     #Alors que schedule_interval est lancer, le programme obtient la valeur par défaut
-    #Ce qui n'est pas NORMAL ... a chercher !!!!
+    #Ce qui n'est pas NORMAL ... a chercher !!!
                 
 #---------------------------------------------------------------------------------------------------------------------------------------
 
