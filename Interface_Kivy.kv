@@ -217,6 +217,34 @@
         Button:
             text:"Accueil"
             on_press: root.manager.current = 'Accueil'
+     
+<PageAlerte>
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            id: AN0
+            text: root.Annonce_0
+            
+        Label:
+            id: AN1
+            text: root.Annonce_1
+
+        Label:
+            id: MP0
+            text: root.Message_Personnaliser
+
+        Button:
+            text:"Arrêt de la Surveillance"
+            on_press: root.Stop_update_Affichage_Etat_Surveillance()
+
+        Button:
+            text:"Lancement de la Surveillance"
+            on_press: root.update_Affichage_Etat_Surveillance()
+            
+        Button:
+            text:"Accueil"
+            on_press: root.manager.current = 'Accueil'
 #---------------------------------------------------------------------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------------------------------------------------------        
