@@ -135,7 +135,7 @@
 
 #---------------------------------------------------------------------------------------------------------------------------------------
 <Surveillance_Du_Marche>
-
+  
     BoxLayout:
         orientation: 'vertical'
 
@@ -155,10 +155,10 @@
         TextInput:
             id: Entree_texte_SURVEILLANCE01                  #Identifiant permettant a ce label d'etre accessible via le code python
             text:"XLM-EUR"                                   #Texte visible dans l'entree texte lors de son affichage
-            allow_copy: True                                 #Autorise le copier/coller
-            auto_indent: True                                #Kivy peut automatiquement indenter le contenue de l'entree
-            cursor_blink: True                               #Le curseur quand il sera place dans l'entree; il clignotera pour annoncer sa presence
-            keyboard_suggestions : True                      #Les clavier intelligent pourront presenter a l'utilisateur des mots a suggerer a entree
+            #allow_copy: True                                 #Autorise le copier/coller
+            #auto_indent: True                                #Kivy peut automatiquement indenter le contenue de l'entree
+            #cursor_blink: True                               #Le curseur quand il sera place dans l'entree; il clignotera pour annoncer sa presence
+            #keyboard_suggestions : True                      #Les clavier intelligent pourront presenter a l'utilisateur des mots a suggerer a entree
 
         Label:
             text:"Saisir le Montant a Surveiller en Temps-Reel:"
@@ -166,10 +166,10 @@
         TextInput:
             id: Entree_texte_SURVEILLANCE02                  #Identifiant permettant a ce label d'etre accessible via le code python
             text:"13"                                        #Texte visible dans l'entree texte lors de son affichage
-            allow_copy: True                                 #Autorise le copier/coller
-            auto_indent: True                                #Kivy peut automatiquement indenter le contenue de l'entree
-            cursor_blink: True                               #Le curseur quand il sera place dans l'entree; il clignotera pour annoncer sa presence
-            keyboard_suggestions : True                      #Les clavier intelligent pourront presenter a l'utilisateur des mots a suggerer a entree
+            #allow_copy: True                                 #Autorise le copier/coller
+            #auto_indent: True                                #Kivy peut automatiquement indenter le contenue de l'entree
+            #cursor_blink: True                               #Le curseur quand il sera place dans l'entree; il clignotera pour annoncer sa presence
+            #keyboard_suggestions : True                      #Les clavier intelligent pourront presenter a l'utilisateur des mots a suggerer a entree
 
         Label:
             text:"Indiquer un Message ?"
@@ -177,10 +177,10 @@
         TextInput:
             id: Entree_texte_SURVEILLANCE03                  #Identifiant permettant a ce label d'etre accessible via le code python
             text:"Mon Message"                               #Texte visible dans l'entree texte lors de son affichage
-            allow_copy: True                                 #Autorise le copier/coller
-            auto_indent: True                                #Kivy peut automatiquement indenter le contenue de l'entree
-            cursor_blink: True                               #Le curseur quand il sera place dans l'entree; il clignotera pour annoncer sa presence
-            keyboard_suggestions : True                      #Les clavier intelligent pourront presenter a l'utilisateur des mots a suggerer a entree
+            #allow_copy: True                                 #Autorise le copier/coller
+            #auto_indent: True                                #Kivy peut automatiquement indenter le contenue de l'entree
+            #cursor_blink: True                               #Le curseur quand il sera place dans l'entree; il clignotera pour annoncer sa presence
+            #keyboard_suggestions : True                      #Les clavier intelligent pourront presenter a l'utilisateur des mots a suggerer a entree
 
         Button:
             text:"Placer la Surveillance"
@@ -218,61 +218,6 @@
             text:"Accueil"
             on_press: root.manager.current = 'Accueil'
      
-<PageAlerte>
-    BoxLayout:
-        orientation: 'vertical'
-
-        Label:
-            id: AN0
-            text: root.Annonce_0
-            
-        Label:
-            id: AN1
-            text: root.Annonce_1
-
-        Label:
-            id: MP0
-            text: root.Message_Personnaliser
-
-        Button:
-            text:"Lancement de la Surveillance"
-            on_press: root.update_Affichage_Etat_Surveillance()
-            
-        Button:
-            text:"Arrêt de la Surveillance"
-            on_press: root.Stop_update_Affichage_Etat_Surveillance()
-
-        Button:
-            text:"Accueil"
-            on_press: root.manager.current = 'Accueil'
-     
-<PageAlerte>
-    BoxLayout:
-        orientation: 'vertical'
-
-        Label:
-            id: AN0
-            text: root.Annonce_0
-            
-        Label:
-            id: AN1
-            text: root.Annonce_1
-
-        Label:
-            id: MP0
-            text: root.Message_Personnaliser
-
-        Button:
-            text:"Arrêt de la Surveillance"
-            on_press: root.Stop_update_Affichage_Etat_Surveillance()
-
-        Button:
-            text:"Lancement de la Surveillance"
-            on_press: root.update_Affichage_Etat_Surveillance()
-            
-        Button:
-            text:"Accueil"
-            on_press: root.manager.current = 'Accueil'
 #---------------------------------------------------------------------------------------------------------------------------------------
 
 #---------------------------------------------------------------------------------------------------------------------------------------        
