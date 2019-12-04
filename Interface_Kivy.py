@@ -351,42 +351,38 @@ class Surveillance_Du_Marche(BoxLayout, Screen):
         #---Elements a Mettre a jour---
         #Exemple:
         #Clock.schedule_once(self.methode)
-        #Clock.schedule_interval(self.methode, X Secondes d'interval de rafraichissement)
-        Clock.schedule_interval(self.get_Recuperation_Paire ,1)
-        Clock.schedule_interval(self.get_Recuperation_Montant ,1)
-        Clock.schedule_interval(self.get_Recuperation_Message_Personnaliser ,1)
+        #Clock.schedule_interval(self.methode, X Secondes d'interval de rafraichissement)XLM-EUR
+        #Clock.schedule_interval(self.get_Recuperation_Paire ,1)
+        #Clock.schedule_interval(self.get_Recuperation_Montant ,1)
+        #Clock.schedule_interval(self.get_Recuperation_Message_Personnaliser ,1)
         #---Elements a Mettre a jour---
 
         self.Recuperation_Paire = self.ids.Entree_texte_SURVEILLANCE01.text
         self.Recuperation_Montant = self.ids.Entree_texte_SURVEILLANCE02.text
         self.Recuperation_Message_Personnaliser = self.ids.Entree_texte_SURVEILLANCE03.text
 
-    #Recuperation des Entrees
-    def recuperation_input_surveillance(self):
+    #Traitement du Resultat et de son affichage
+    def Affichage_Etat_Surveillance(self):
+        #Recuperation des Entrees
         self.Recuperation_Paire = self.ids.Entree_texte_SURVEILLANCE01.text                                                                                  #Recuperation de la Valeur saisie dans la boite a texte
         self.Recuperation_Montant = self.ids.Entree_texte_SURVEILLANCE02.text                                                                                #Recuperation de la Valeur saisie dans la boite a texte
         self.Recuperation_Message_Personnaliser = self.ids.Entree_texte_SURVEILLANCE03.text                                                                  #Recuperation de la Valeur saisie dans la boite a texte
-        print(self.Recuperation_Paire +" " + self.Recuperation_Montant +" "+ self.Recuperation_Message_Personnaliser)                                                  #Affichage de cette valeur dans la console
+        print("Affichage_Etat_Surveillance: " + self.Recuperation_Paire +" " + self.Recuperation_Montant +" "+ self.Recuperation_Message_Personnaliser)                                                  #Affichage de cette valeur dans la console
 
-        Surveillance_Du_Marche.Affichage_Etat_Surveillance(self,self.Recuperation_Paire,self.Recuperation_Montant,self.Recuperation_Message_Personnaliser)             #On donne les information saisie a cette fonction pour traitement
-
-    #Traitement du Resultat et de son affichage
-    def Affichage_Etat_Surveillance(self,Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser):
         #Recuperation des Informations
-        self.Annonce_0 , self.Annonce_1 , self.Message_Personnaliser, boolean_popup = Recherche_Et_Surveillance_Coin(Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)
+        self.Annonce_0 , self.Annonce_1 , self.Message_Personnaliser, boolean_popup = Recherche_Et_Surveillance_Coin(self.Recuperation_Paire,self.Recuperation_Montant,self.Recuperation_Message_Personnaliser)
 
     def Lancement_Surveillance(self):
-        Surveillance_Du_Marche.recuperation_input_surveillance(self)
+        Surveillance_Du_Marche.Affichage_Etat_Surveillance(self)
         sm.current = 'PageAlerte'
 
-    def get_Recup(self):
+    def get_Recup(self, *args):
         self.Recuperation_Paire = self.ids.Entree_texte_SURVEILLANCE01.text                                                                                  #Recuperation de la Valeur saisie dans la boite a texte
         self.Recuperation_Montant = self.ids.Entree_texte_SURVEILLANCE02.text                                                                                #Recuperation de la Valeur saisie dans la boite a texte
         self.Recuperation_Message_Personnaliser = self.ids.Entree_texte_SURVEILLANCE03.text                                                                  #Recuperation de la Valeur saisie dans la boite a texte
-        print(self.Recuperation_Paire +" " + self.Recuperation_Montant +" "+ self.Recuperation_Message_Personnaliser)                                                  #Affichage de cette valeur dans la console
+        print("get_Recup: " + self.Recuperation_Paire +" " + self.Recuperation_Montant +" "+ self.Recuperation_Message_Personnaliser)                                                  #Affichage de cette valeur dans la console
 
-        #Surveillance_Du_Marche.Affichage_Etat_Surveillance(self,Recuperation_Paire,Recuperation_Montant,Recuperation_Message_Personnaliser)             #On donne les information saisie a cette fonction pour traitement
-
+        #Surveillance_Du_Marche.Affichage_Etat_Surveillance(self)   #Traitement
         return self.Recuperation_Paire,self.Recuperation_Montant,self.Recuperation_Message_Personnaliser
 
     def get_Recuperation_Paire(self, *args):
@@ -433,9 +429,8 @@ class PageAlerte(BoxLayout, Screen):
         self.Recuperation_Montant = getter.get_Recuperation_Montant()                                                      #Recuperation de la Valeur saisie dans la boite a texte
         self.Recuperation_Message_Personnaliser = getter.get_Recuperation_Message_Personnaliser()                          #Recuperation de la Valeur saisie dans la boite a texte
         print("update_Affichage_Etat_Surveillance:" + self.Recuperation_Paire,self.Recuperation_Montant,self.Recuperation_Message_Personnaliser)
-
-
         #self.Recuperation_Paire,self.Recuperation_Montant,self.Recuperation_Message_Personnaliser = getter.get_Recup()
+
         #Recuperation_Paire = self.ids.Entree_texte_SURVEILLANCE01.text                                                                                  #Recuperation de la Valeur saisie dans la boite a texte
         #Recuperation_Montant = self.ids.Entree_texte_SURVEILLANCE02.text                                                                                #Recuperation de la Valeur saisie dans la boite a texte
         #Recuperation_Message_Personnaliser = self.ids.Entree_texte_SURVEILLANCE03.text                                                                  #Recuperation de la Valeur saisie dans la boite a texte
@@ -443,9 +438,7 @@ class PageAlerte(BoxLayout, Screen):
 
         #MAJ des Informations
         self.Annonce_0 , self.Annonce_1 , self.Message_Personnaliser, boolean_popup = Recherche_Et_Surveillance_Coin(self.Recuperation_Paire,self.Recuperation_Montant,self.Recuperation_Message_Personnaliser)
-
-        print(self.Recuperation_Paire,self.Recuperation_Montant,self.Recuperation_Message_Personnaliser)
-
+        print("update_Affichage_Etat_Surveillance: "+self.Recuperation_Paire,self.Recuperation_Montant,self.Recuperation_Message_Personnaliser)
         Clock.schedule_once(self.update_Affichage_Etat_Surveillance)
     
     def Stop_update_Affichage_Etat_Surveillance(self):
