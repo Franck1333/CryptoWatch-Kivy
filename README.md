@@ -10,7 +10,7 @@ This Software allow you to get financials informations about cryptocurrencies by
 
 ## Getting Started  
   
-To get a copy of the project , you can go on the GitHub's webpage of the project and click on the green button to download as a .ZIP file. However , if you're using a prompt console on an Unix machine use this line :
+To get a copy of the project, you can go on the GitHub's webpage of the project and click on the green button to download as a .ZIP file. However, if you're using a prompt console on an Unix machine use this line :
 
 ```
 git clone https://github.com/Franck1333/CryptoWatch-Kivy.git
@@ -18,7 +18,7 @@ git clone https://github.com/Franck1333/CryptoWatch-Kivy.git
   
 ### Prerequisites  
   
-To use the project , you will need some Hardware :
+To use the project, you will need some Hardware :
   
 ```  
 A Raspberry Pi (Last Version is better) or any Linux computer compatible,
@@ -46,25 +46,25 @@ Now especially for the *Pimoroni HyperPixel 4* in this case :
 ```
   
 ### Downloading/Installing
-To get and downloaded the files , use this line : 
+To get and downloaded the files, use this line : 
 ```
 git clone https://github.com/Franck1333/CryptoWatch-Kivy.git
 ```
-- When the project is Downloaded , check your `pi` folder , and you will see the folder `CryptoWatch-Kivy`
-When you did it , you will have to launch the file called `setup.py` to install the dependencies neccessary for the project with this command line : 
+- When the project is Downloaded, check your `pi` folder, and you will see the folder `CryptoWatch-Kivy`
+When you did it, you will have to launch the file called `setup.py` to install the dependencies neccessary for the project with this command line : 
 
 ```
   sudo python3 setup.py install
 ```
 
-- If some problem during the installation occured , please execute this command :
+- If some problem during the installation occured, please execute this command :
 ```
   sudo pip3 install cbpro cmc pandas numpy matplotlib pydub kivy
 ```
 
 ## Run
 #### The Way to run the project :
-To run the project ; if you want to see the console activities , you can launch the file called `Interface_Kivy.py`  into the Command Line Prompt with `python3 Interface_CryptoView.py` in the main folder.
+To run the project; if you want to see the console activities, you can launch the file called `Interface_Kivy.py`  into the Command Line Prompt with `python3 Interface_CryptoView.py` in the main folder.
 
 ## Running the tests  
   
