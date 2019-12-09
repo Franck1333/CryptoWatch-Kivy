@@ -82,7 +82,8 @@ Example 	: 	Any help or example that I used for the project
 Services	:	Main features 
 ```
 #### Files in "/CryptoWatch-Tkinter/Services/"
-- Main features of the program
+
+Main features of the program
 ```
 - Graph.py : This feature allow the 'Historical_CMC.py' to draw a new graph with the data that has been received.
 
