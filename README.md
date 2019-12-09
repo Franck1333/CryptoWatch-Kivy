@@ -101,8 +101,7 @@ This feature allow also to the main program to download an Image on the website 
 - nettoyage_du_cache.py : Ancient program that allow all the program which using to delete all the Python2 Cache Files.
 ```
 
-- Folders inside
- 
+Folders inside
  ```
  - Sounds : Sound Pack use by the Main Program 
  - Téléchargements : This folder is use by the Main Program to download in this folder all the ressources which come from Internet 
