@@ -99,9 +99,9 @@ This feature allow also to the main program to download an Image on the website 
 - Re_tailler_une_image.py : This feature allow to resize a picture.
 
 - nettoyage_du_cache.py : Ancient program that allow all the program which using to delete all the Python2 Cache Files.
-
 ```
- - Folders inside
+
+- Folders inside
  
  ```
  - Sounds : Sound Pack use by the Main Program 
