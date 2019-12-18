@@ -18,6 +18,6 @@ setup(
     license='lgpl',
     packages=find_packages(),
     include_package_data=False,
-    install_requires=["cbpro","cmc","pandas","numpy","matplotlib","pydub","kivy"], #Get the Dependencies from Pypi (pip install)
+    install_requires=["cbpro","cmc","pandas","numpy","matplotlib","pydub","Cython","kivy"], #Get the Dependencies from Pypi (pip install)
     #dependency_links=[''], #Get the Dependencies via HTTP(s)
 )
